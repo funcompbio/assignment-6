@@ -41,13 +41,3 @@ def test_nevirapine() :
     molf = src.smilesparser.main()
 
     assert molf == "Molecular formula: C15H14N4O1"
-
-def test_codelines() :
-    n=int(subprocess.check_output("cat src/smilesparser.py | sed '/^[[:space:]]*$/d' | sed 's/^[[:space:]]*//g' | grep -v '^#' | wc -l", shell=True, text=True))
-
-    assert n <= 35
-
-def test_codeindex() :
-    fname=subprocess.check_output("grep -l atoms.index src/smilesparser.py | tr -d '\n'", shell=True, text=True)
-
-    assert fname == "src/smilesparser.py"

@@ -28,7 +28,7 @@ assignment will have a penalty.
 The goal of this assignment is to **implement in Python a parser of
 [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) strings**,
 similar to the one developed during Practical 7 but developing a more compact
-code by using the [`index()` method](https://docs.python.org/3/tutorial/datastructures.html)
+code by **using** the [`index()` method](https://docs.python.org/3/tutorial/datastructures.html)
 of _list_ objects in Python.
 
 The `index()` method returns the position at the first occurrence of the
@@ -61,8 +61,8 @@ extract the number of deaths from April, by relating both list objects using the
 
 Using the `index()` method, optimize the SMILES parser that you have written in
 Python in Practical 7, which takes a SMILES string as input and returns the
-molecular formula as output in the right format. The final code should have
-less than 35 lines, excluding blank and comment lines, and it should provide
+molecular formula as output in the right format. **The final code should have
+less than 35 lines**, excluding blank and comment lines, and it should provide
 the correct molecular formula given the corresponding input SMILES string,
 at least for the following drugs: _aspirine_, _ibuprofen_, _caffeine_ and _nevirapine_.
 Please use the [DrugBank](https://drugbank.com) to figure out their corresponding
@@ -100,3 +100,5 @@ The rubric to evaluate this assignment consists of the following items:
   * Does the Python program `src/smilesparser.py` runs without errors?
   * Does the Python program `src/smilesparser.py` calculates the molecular formula from a given SMILES string correctly?
   * Does the Python program `src/smilesparser.py` passes all autograding tests?
+  * Does the Python program `src/smilesparser.py` has fewer than 35 lines of code, excluding blank and comment lines?
+  * Does the Python program `src/smilesparser.py` use the `index()` method for _list_ objects?
