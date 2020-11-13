@@ -13,7 +13,7 @@ the organization account for FCB in the academic year 2020-21 at
 [https://github.com/funcompbio2020](https://github.com/funcompbio2020)
 using the submission link provided at the FCB Moodle site.
 
-Once you have cloned the GitHub repo which has `assignment-5` and your
+Once you have cloned the GitHub repo which has `assignment-6` and your
 GitHub username as repo name, then you can work on it in your local disk
 and _push_ your changes whenever you like, but make sure that you have pushed
 the last version of your assignment before the deadline. There is no
