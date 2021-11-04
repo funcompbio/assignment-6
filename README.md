@@ -1,16 +1,14 @@
-# Assignment 6 - FCB 2020
-### Deadline: 13/11/2020 - 23:59
+[![FCB-Python-autograding](../../actions/workflows/fcb_autograding.yml/badge.svg)](../../actions?query=workflow%3AFCB-Python-autograding)
 
-This assignment has been developed in collaboration with Dr. Jordi Mestres,
-head of the [Systems Pharmacology Research Group](http://syspharm.imim.cat)
-at the Hospital del Mar Research Institute ([IMIM](https://www.imim.cat)).
+# Assignment 7 - FCB 2021
+### Deadline: 12/11/2021 - 23:59
 
 ## Submission procedure
 
 This assignment has to be submitted using GitHub Classroom. This
 means that you should have cloned the GitHub repo of this assignment from
-the organization account for FCB in the academic year 2020-21 at
-[https://github.com/funcompbio2020](https://github.com/funcompbio2020)
+the organization account for FCB in the academic year 2021-22 at
+[https://github.com/funcompbio2021](https://github.com/funcompbio2021)
 using the submission link provided at the FCB Moodle site.
 
 Once you have cloned the GitHub repo which has `assignment-6` and your
@@ -25,80 +23,82 @@ assignment will have a penalty.
 
 ## Description
 
-The goal of this assignment is to **implement in Python a parser of
-[SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) strings**,
-similar to the one developed during Practical 7 but developing a more compact
-code by **using** the [`index()` method](https://docs.python.org/3/tutorial/datastructures.html)
-of _list_ objects in Python.
+The goal of this assignment is to **create a CSV file with COVID19 data for Catalonia derived from the general population, starting on June 1st, 2021, with older data at the beginning of the file and more recent data at the end of the file**. To achieve this goal you should follow these 2 steps:
 
-The `index()` method returns the position at the first occurrence of the
-specified value.
+  1. Create an R script called `analysis.R` with the R commands that
+  read the CSV file `catalunya_setmanal.csv` **provided in the repo
+  of the assignment** and make the necesssary transformations and
+  calculations to obtain a `data.frame` object with the columns
+  `DATA_INI`, `R0_CONFIRMAT_M`, `IA14` and `PERC_PCRTAR_POSITIVES`,whose
+  first lines look like this:
 
-**Syntax:** `list.index(element)`, where `element` is the element of the
-list to search for.
+  ```
+    DATA_INI R0_CONFIRMAT_M     IA14 PERC_PCRTAR_POSITIVES
+1 2021-06-01       0.937658 102.9883                3.5296
+2 2021-06-02       0.952521  99.3055                3.5322
+3 2021-06-03       0.965133  96.5175                3.5561
+4 2021-06-04       0.973635  94.3649                3.6365
+5 2021-06-05       0.972995  92.0826                3.5797
+6 2021-06-06       0.965863  91.2267                3.5496
+  ```
 
-**Example:** Let's say we want to extract the index of month `apr` (April)
-in a list object `months` containing the months of the year. We illustrate
-how the `index()` method works from the Python command-line interpreter:
+  2. Let the `data.frame` object of the ranking be called `dtf`,
+  the last line of your script should write to disk that ranking
+  into a CSV file called `COVID19CATlast6months.csv` with the
+  following R command:
 
-```
->>> months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct"]
->>> print(months.index("apr"))
-3
-```
-
-**Example:** Given a vector of months stored in list object `months` and a vector of
-number of COVID19 deaths per month in Spain, stored in a list object `ncoviddeaths`,
-extract the number of deaths from April, by relating both list objects using the
-`index()` method:
-
-```
->>> months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct"]
->>> ncoviddeaths = [0, 0, 13918, 11644, 2592, 411, 106, 1218, 2857, 3502]
->>> print(ncoviddeaths[months.index("apr")])
-11644
-```
-
-Using the `index()` method, optimize the SMILES parser that you have written in
-Python in Practical 7, which takes a SMILES string as input and returns the
-molecular formula as output in the right format. **The final code should have
-less or equal than 35 lines**, excluding blank and comment lines, and it should provide
-the correct molecular formula given the corresponding input SMILES string,
-at least for the following drugs: _aspirine_, _ibuprofen_, _caffeine_ and _nevirapine_.
-Please use the [DrugBank](https://drugbank.com) to figure out their corresponding
-SMILES strings and expected molecular formulas.
-
-This assignment incorporates [GitHub Classroom Autograding](https://mspoweruser.com/github-classroom-autograding-feature),
-which will help you to automatically test whether your Python program is
-correctly working after every _push_. To work with this feature you
-need to edit your program in the existing file `src/smilesparser.py`,
-and leave the rest of the files and directory structure
-intact. The file `src/smilesparser.py` is a template that
-contains instructions written as comments, indicating where should you
-edit your code. Note that part of the template already defines some of
-the variables that you **have to** use. Their meaning should be clear
-to your from having done Practical 7.
-
+  ```
+  write.csv(dtf, "COVID19CATlast6months.csv", row.names=FALSE)
+  ```
 
 Your assignment repo should have the following files:
 
   1. This `README.md` file.
-  2. The `src` directory with the initial files of the assignment repo.
-  3. The `test` directory with the initial files of the assignment repo.
+  2. The COVID19 data CSV file `catalunya_setmanal.csv`.
+  3. The R script file `analysis.R`.
+  4. The resulting CSV file `COVID19CATlast6months.csv`.
 
-Eventually, you may encounter that Python automatically creates a directory called
-`__pycache__`, you may ignore that directory since this template is already
-prepared to ignore that directory by including it into a `.gitignore` file that
-informs Git to avoid putting certain files under version control. In any case,
-**you should only be editing the file `src/smilesparser.py`**.
+The file `COVID19CATlast6months.csv` should have the following
+characteristics:
+
+  1. It should be a CSV file using the comma (`,`) as column separator.
+  2. It should have the following line as first (column header) line:
+     ```
+     "DATA_INI","R0_CONFIRMAT_M","IA14","PERC_PCRTAR_POSITIVES"
+     ```
+  3. The second and following lines should contain the values corresponding
+     to the columns specified above, ordered by date with the oldest date in
+     the first row and the most recent in the last one. The data should be
+     derived from the general population, that is, **excluding the data
+     from geriatric residences**. For instance, the first line should look
+     like this one:
+     ```
+     "2021-06-01",0.937658,102.9883,3.5296
+     ```
+
+This assignment incorporates an autograding feature using a so-called
+[GitHub Actions Worflow](https://github.com/features/actions), which will
+help you to automatically test whether your R script is
+correctly working after every _push_. More concretely, a few minutes after
+you _pushed_ your changes to your remote GitHub repo, the badge labeled
+`FCB-Python-autograding` on top of this README file will be red and display
+the message `failing` if the autograding has not been successful, and
+green with the message `passing` otherwise. You may click on badge to
+look at output of the autograding tests to understand why it has failed,
+if that was the case. This feature provides you with
+[formative assessment](https://en.wikipedia.org/wiki/Formative_assessment)
+and to work with it you need to edit your R script in a file called
+`analysis.R` at the root of your GitHub repo and leave intact the file
+`catalunya_setmanal.csv`.
 
 ## Evaluation rubric
 
 The rubric to evaluate this assignment consists of the following items:
 
   * Does the assignment contain the required files?
-  * Does the Python program `src/smilesparser.py` runs without errors?
-  * Does the Python program `src/smilesparser.py` calculates the molecular formula from a given SMILES string correctly?
-  * Does the Python program `src/smilesparser.py` passes all autograding tests?
-  * Does the Python program `src/smilesparser.py` has less or equal than 35 lines of code, excluding blank and comment lines?
-  * Does the Python program `src/smilesparser.py` use the `index()` method for _list_ objects?
+  * Does the file `COVID19CATlast6months.csv` contain the four required columns?
+  * Is the file `COVID19CATlast6months.csv` ordered chronologically starting
+    on June 1st, 2021 and does it contain the COVID19 data derived from the
+    general population for the four required columns?
+  * Does the R code run without errors?
+  * Does the R code produce the expected result?
