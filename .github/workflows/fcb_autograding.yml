@@ -25,6 +25,6 @@ jobs:
       - name: Check for setwd() in analysis.R
         run: nlswd=`grep -n setwd analysis.R | cut -d ':' -f 1` ; if [ $nlswd -gt 0 ] ; then { echo 'YOU ARE CALLING setwd() IN LINE' $nlswd PLEASE DO NOT DO IT. ; exit 1 ; } ; else { exit 0 ; } ; fi
       - name: Run analysis.R
-        run: Rscript analysis.R
+        run: Rscript -e "options(encoding = 'UTF-8') ; source('analysis.R')"
       - name: Check that analysis.R produces the expected results file COVID19CATlast6months.csv
         run: if [ -e COVID19CATlast6months.csv ] ; then { if [ `md5sum COVID19CATlast6months.csv | cut -d ' ' -f 1` == "8cdd6b70d7cd794ab9dea0b6ab2aaf7f" ] ; then exit 0 ; else { echo RESULTING COVID19CATlast6months.csv IS WRONG ; exit 1 ; } ; fi ; } ; else { echo MISSING FILE COVID19CATlast6months.csv ; exit 1 ; }
