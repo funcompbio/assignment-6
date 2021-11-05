@@ -1,6 +1,6 @@
 [![FCB-Python-autograding](../../actions/workflows/fcb_autograding.yml/badge.svg)](../../actions?query=workflow%3AFCB-Python-autograding)
 
-# Assignment 7 - FCB 2021
+# Assignment 6 - FCB 2021
 ### Deadline: 12/11/2021 - 23:59
 
 ## Submission procedure
@@ -23,14 +23,14 @@ assignment will have a penalty.
 
 ## Description
 
-The goal of this assignment is to **create a CSV file with COVID19 data for Catalonia derived from the general population, starting on June 1st, 2021, with older data at the beginning of the file and more recent data at the end of the file**. To achieve this goal you should follow these 2 steps:
+The goal of this assignment is to **create an R script that produces a CSV file called `COVID19CATlast6months.csv` with COVID19 data for Catalonia derived from the general population, starting on June 1st, 2021, with older data at the beginning of the file and more recent data at the end of the file**. To achieve this goal you should follow these 2 steps:
 
   1. Create an R script called `analysis.R` with the R commands that
   read the CSV file `catalunya_setmanal.csv` **provided in the repo
   of the assignment** and make the necesssary transformations and
   calculations to obtain a `data.frame` object with the columns
-  `DATA_INI`, `R0_CONFIRMAT_M`, `IA14` and `PERC_PCRTAR_POSITIVES`,whose
-  first lines look like this:
+  `DATA_INI`, `R0_CONFIRMAT_M`, `IA14` and `PERC_PCRTAR_POSITIVES`,
+  whose first lines look like this:
 
   ```
     DATA_INI R0_CONFIRMAT_M     IA14 PERC_PCRTAR_POSITIVES
@@ -42,8 +42,8 @@ The goal of this assignment is to **create a CSV file with COVID19 data for Cata
 6 2021-06-06       0.965863  91.2267                3.5496
   ```
 
-  2. Let the `data.frame` object of the ranking be called `dtf`,
-  the last line of your script should write to disk that ranking
+  2. Let the `data.frame` object of the resulting data be called `dtf`,
+  the last line of your script should write to disk that object
   into a CSV file called `COVID19CATlast6months.csv` with the
   following R command:
 
@@ -61,7 +61,7 @@ Your assignment repo should have the following files:
 The file `COVID19CATlast6months.csv` should have the following
 characteristics:
 
-  1. It should be a CSV file using the comma (`,`) as column separator.
+  1. It should be a CSV file using the comma (`,`) as column separator and non-numeric values should be quoted with double quotes (`"`).
   2. It should have the following line as first (column header) line:
      ```
      "DATA_INI","R0_CONFIRMAT_M","IA14","PERC_PCRTAR_POSITIVES"
