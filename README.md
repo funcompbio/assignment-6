@@ -33,7 +33,7 @@ The goal of this assignment is to **create an R script that produces a CSV file 
   whose first lines look like this:
 
   ```
-    DATA_INI R0_CONFIRMAT_M     IA14 PERC_PCRTAR_POSITIVES
+      DATA_INI R0_CONFIRMAT_M     IA14 PERC_PCRTAR_POSITIVES
 1 2021-06-01       0.937658 102.9883                3.5296
 2 2021-06-02       0.952521  99.3055                3.5322
 3 2021-06-03       0.965133  96.5175                3.5561
