@@ -1,4 +1,4 @@
-[![FCB-Python-autograding](../../actions/workflows/fcb_autograding.yml/badge.svg)](../../actions?query=workflow%3AFCB-Python-autograding)
+[![FCB-R-autograding](../../actions/workflows/fcb_autograding.yml/badge.svg)](../../actions?query=workflow%3AFCB-R-autograding)
 
 # Assignment 6 - FCB 2021
 ### Deadline: 12/11/2021 - 23:59
