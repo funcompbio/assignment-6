@@ -1,4 +1,4 @@
-name: FCB-Python-autograding
+name: FCB-R-autograding
 
 on: [push]
 
