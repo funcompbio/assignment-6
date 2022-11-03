@@ -1,14 +1,14 @@
 [![FCB-R-autograding](../../actions/workflows/fcb_autograding.yml/badge.svg)](../../actions?query=workflow%3AFCB-R-autograding)
 
-# Assignment 6 - FCB 2021
-### Deadline: 12/11/2021 - 23:59
+# Assignment 6 - FCB 2022
+### Deadline: 11/11/2022 - 23:59
 
 ## Submission procedure
 
 This assignment has to be submitted using GitHub Classroom. This
 means that you should have cloned the GitHub repo of this assignment from
 the organization account for FCB in the academic year 2021-22 at
-[https://github.com/funcompbio2021](https://github.com/funcompbio2021)
+[https://github.com/funcompbio2022](https://github.com/funcompbio2022)
 using the submission link provided at the FCB Moodle site.
 
 Once you have cloned the GitHub repo which has `assignment-6` and your
@@ -21,9 +21,20 @@ assignment, the version available at the deadline will be retrieved. If the
 first version available is posterior to the deadline, then the mark of the
 assignment will have a penalty.
 
+To complete your submission (see rubric below) please **agree to the following
+academic integrity statement** by editing this README file and placing the
+letter `X` between the squared brackets preceding the statement:
+
+- [] The work here submitted as been entirely developed by myself and is the
+  result of my own work.
+
 ## Description
 
-The goal of this assignment is to **create an R script that produces a CSV file called `COVID19CATlast6months.csv` with COVID19 data for Catalonia derived from the general population, starting on June 1st, 2021, with older data at the beginning of the file and more recent data at the end of the file**. To achieve this goal you should follow these 2 steps:
+The goal of this assignment is to **create an R script that produces a CSV file
+called `COVID19CATlast6months.csv` with COVID19 data for Catalonia derived from
+the general population, starting on June 1st, 2021, with older data at the
+beginning of the file and more recent data at the end of the file**. To achieve
+this goal you should follow these 2 steps:
 
   1. Create an R script called `analysis.R` with the R commands that
   read the CSV file `catalunya_setmanal.csv` **provided in the repo
@@ -61,7 +72,8 @@ Your assignment repo should have the following files:
 The file `COVID19CATlast6months.csv` should have the following
 characteristics:
 
-  1. It should be a CSV file using the comma (`,`) as column separator and non-numeric values should be quoted with double quotes (`"`).
+  1. It should be a CSV file using the comma (`,`) as column separator and
+     non-numeric values should be quoted with double quotes (`"`).
   2. It should have the following line as first (column header) line:
      ```
      "DATA_INI","R0_CONFIRMAT_M","IA14","PERC_PCRTAR_POSITIVES"
@@ -88,13 +100,14 @@ look at output of the autograding tests to understand why it has failed,
 if that was the case. This feature provides you with
 [formative assessment](https://en.wikipedia.org/wiki/Formative_assessment)
 and to work with it you need to edit your R script in a file called
-`analysis.R` at the root of your GitHub repo and leave intact the file
-`catalunya_setmanal.csv`.
+`analysis.R` at the root of your GitHub repo and **leave intact the file
+`catalunya_setmanal.csv`**.
 
 ## Evaluation rubric
 
 The rubric to evaluate this assignment consists of the following items:
 
+  * Did you agree to the academic integrity statement?
   * Does the assignment contain the required files?
   * Does the file `COVID19CATlast6months.csv` contain the four required columns?
   * Is the file `COVID19CATlast6months.csv` ordered chronologically starting
