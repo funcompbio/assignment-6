@@ -19,7 +19,7 @@ jobs:
       - name: Checking for catalunya_setmanal.csv
         run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e catalunya_setmanal.csv ] ; then { if [ `md5sum catalunya_setmanal.csv | cut -d ' ' -f 1` == "f8d8df15236eb2c7b861cf035795adff" ] ; then exit 0 ; else { echo -e "${RED}WRONG FILE catalunya_setmanal.csv${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE catalunya_setmanal.csv${NC}" ; exit 1 ; } fi
       - name: Check results file COVID19CATlast6months.csv
-        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e COVID19CATlast6months.csv ] ; then { if [ `md5sum COVID19CATlast6months.csv | cut -d ' ' -f 1` == "8cdd6b70d7cd794ab9dea0b6ab2aaf7f" ] ; then exit 0 ; else { echo -e "${RED}CONTENTS IN COVID19CATlast6months.csv ARE WRONG${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE COVID19CATlast6months.csv${NC}" ; exit 1 ; } fi
+        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e COVID19CATlast6months.csv ] ; then { if [ `cat COVID19CATlast6months.csv | tr -d '\r' | md5sum | cut -d ' ' -f 1` == "8cdd6b70d7cd794ab9dea0b6ab2aaf7f" ] ; then exit 0 ; else { echo -e "${RED}CONTENTS IN COVID19CATlast6months.csv ARE WRONG${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE COVID19CATlast6months.csv${NC}" ; exit 1 ; } fi
       - name: Check for setwd() in analysis.R
         run: RED='\033[0;31m'; NC='\033[0m' ; nlswd=`grep -n setwd analysis.R | cut -d ':' -f 1` ; if [ $nlswd -gt 0 ] ; then { echo -e "${RED}YOU ARE CALLING setwd IN LINE $nlswd PLEASE DO NOT DO IT${NC}" ; exit 1 ; } ; else { exit 0 ; } ; fi
       - name: Checking for syntax errors in analysis.R
