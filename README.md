@@ -116,8 +116,9 @@ The rubric to evaluate this assignment consists of the following items:
   * Did you use the GitHub user profile you provided in the first assignment?
   * Did you properly agree to the academic integrity statement?
   * Does the assignment contain the required files?
-  * Does the file `infeccions_catalunya_2023.csv` contain the four required columns?
-  * Does the file `infeccions_catalunya_2023.csv` contain the infections data
-    aggregated and ordered by month for the year 2023?
+  * Does the file `infeccions_catalunya_2023.csv` contain the four required
+    columns?
+  * Does the file `infeccions_catalunya_2023.csv` contain the required
+    infections data aggregated and ordered by month for the year 2023?
   * Does the R code run without errors?
   * Does the R code produce the expected result?
