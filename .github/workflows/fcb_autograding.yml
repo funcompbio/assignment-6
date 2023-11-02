@@ -23,7 +23,7 @@ jobs:
       - name: Checking for mostres_analitzades.csv
         run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e mostres_analitzades.csv ] ; then { if [ `md5sum mostres_analitzades.csv | cut -d ' ' -f 1` == "5243531d6343f99288dc51793204418d" ] ; then exit 0 ; else { echo -e "${RED}WRONG FILE mostres_analitzades.csv${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE mostres_analitzades.csv${NC}" ; exit 1 ; } ; fi
       - name: Checking for analysis.R
-        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e mostres_analitzades.csv ] ; then exit 0 ;  else { echo -e "${RED}MISSING FILE analysis.R${NC}" ; exit 1 ; } ; fi
+        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e analysis.R ] ; then exit 0 ;  else { echo -e "${RED}MISSING FILE analysis.R${NC}" ; exit 1 ; } ; fi
       - name: Check results file infeccions_catalunya_2023.csv
         run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e infeccions_catalunya_2023.csv ] ; then { if [ `cat infeccions_catalunya_2023.csv | tr -d '\r' | md5sum | cut -d ' ' -f 1` == "99040ad724d05b58e07192da54813951" ] ; then exit 0 ; else { echo -e "${RED}CONTENTS IN infeccions_catalunya_2023.csv ARE WRONG${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE infeccions_catalunya_2023.csv${NC}" ; exit 1 ; } fi
       - name: Check for setwd() in analysis.R
