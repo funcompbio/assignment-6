@@ -56,12 +56,13 @@ follow these 2 steps:
 9  Sep      506   850        59.5
 10 Oct      481   794        60.6
   ```
-  Here the columns `POSITIUS` and `TOTAL` correspond, respectively, to
-  the columns `positiu` and `total` from the CSV file `mostres_analitzades.csv`
-  **aggregated and ordered by month**. The column `PERCENTATGE` corresponds to
-  the percentage of positive cases calculated up to one decimal digit. To round
-  the calculation to one decimal digit use the R function `round()`; consult
-  its help page to figure out how it works.
+    Here the columns `POSITIUS` and `TOTAL` correspond, respectively, to
+    the columns `positiu` and `total` from the CSV file `mostres_analitzades.csv`
+    **aggregated and ordered by month**. The column `PERCENTATGE` corresponds to
+    the percentage of positive cases over the corresponding total of the month,
+    calculated up to one decimal digit. To round the calculation to one decimal
+    digit use the R function `round()`; consult its help page to figure out how
+    it works.
 
   2. Let the `data.frame` object of the resulting data be called `res`,
   the last line of your script should write to disk that object
