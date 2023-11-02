@@ -37,41 +37,38 @@ and ordered by month for the year 2023.** To achieve this goal you should
 follow these 2 steps:
 
   1. Create an R script called `analysis.R` with the R commands that
-  read the CSV file `mostres_analitzades.csv` **provided in the repo
-  of the assignment** and make the necessary transformations and
-  calculations on the input data from `mostres_analitzades.csv` to obtain a
-  `data.frame` object with the columns `MES`, `POSITIUS`, `TOTAL` and
-  `PERCENTAGE`, corresponding respectively to the month on which values
-  of `TOTAL` and `POSITIUS` have been aggregated, the columns `positiu` and
-  `total` from the CSV file `mostres_analitzades.csv` aggregated by month,
-  and the percentage of positives cases over the corresponding total of the
-  month, calculated up to one decimal digit. To round the calculation to one
-  decimal digit use the R function `round()`; consult its help page to figure
-  out how it works. The contents of this `data.frame` object should look
-  exactly like this:
-
-  ```
-     MES POSITIUS TOTAL PERCENTATGE
-1  Jan     1406  2046        68.7
-2  Feb     1233  1656        74.5
-3  Mar      971  1440        67.4
-4  Apr      588   918        64.1
-5  May      778  1224        63.6
-6  Jun      394   724        54.4
-7  Jul      374   649        57.6
-8  Aug      269   482        55.8
-9  Sep      506   850        59.5
-10 Oct      481   794        60.6
-  ```
-
+     read the CSV file `mostres_analitzades.csv` **provided in the repo
+     of the assignment** and make the necessary transformations and
+     calculations on the input data from `mostres_analitzades.csv` to obtain a
+     `data.frame` object with the columns `MES`, `POSITIUS`, `TOTAL` and
+     `PERCENTAGE`, corresponding respectively to the month on which values
+     of `TOTAL` and `POSITIUS` have been aggregated, the columns `positiu` and
+     `total` from the CSV file `mostres_analitzades.csv` aggregated by month,
+     and the percentage of positives cases over the corresponding total of the
+     month, calculated up to one decimal digit. To round the calculation to one
+     decimal digit use the R function `round()`; consult its help page to figure
+     out how it works. The contents of this `data.frame` object should look
+     exactly like this:
+     ```
+          MES POSITIUS TOTAL PERCENTATGE
+     1  Jan     1406  2046        68.7
+     2  Feb     1233  1656        74.5
+     3  Mar      971  1440        67.4
+     4  Apr      588   918        64.1
+     5  May      778  1224        63.6
+     6  Jun      394   724        54.4
+     7  Jul      374   649        57.6
+     8  Aug      269   482        55.8
+     9  Sep      506   850        59.5
+     10 Oct      481   794        60.6
+     ```
   2. Let the `data.frame` object of the resulting data be called `res`,
-  the last line of your script should write to disk that object
-  into a CSV file called `infeccions_catalunya_2023.csv` with the
-  following R command:
-
-  ```
-  write.csv(res, "infeccions_catalunya_2023.csv", row.names=FALSE)
-  ```
+     the last line of your script should write to disk that object
+     into a CSV file called `infeccions_catalunya_2023.csv` with the
+     following R command:
+     ```
+     write.csv(res, "infeccions_catalunya_2023.csv", row.names=FALSE)
+     ```
 
 Your assignment repo should have the following files:
 
