@@ -9,22 +9,30 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        r-version: [4.2]
+        r-version: [4.3]
     steps:
       - uses: actions/checkout@v3
       - name: Set up R ${{ matrix.r-version }}
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.r-version }}
-      - name: Checking for catalunya_setmanal.csv
-        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e catalunya_setmanal.csv ] ; then { if [ `md5sum catalunya_setmanal.csv | cut -d ' ' -f 1` == "f8d8df15236eb2c7b861cf035795adff" ] ; then exit 0 ; else { echo -e "${RED}WRONG FILE catalunya_setmanal.csv${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE catalunya_setmanal.csv${NC}" ; exit 1 ; } fi
-      - name: Check results file COVID19CATlast6months.csv
-        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e COVID19CATlast6months.csv ] ; then { if [ `cat COVID19CATlast6months.csv | tr -d '\r' | md5sum | cut -d ' ' -f 1` == "8cdd6b70d7cd794ab9dea0b6ab2aaf7f" ] ; then exit 0 ; else { echo -e "${RED}CONTENTS IN COVID19CATlast6months.csv ARE WRONG${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE COVID19CATlast6months.csv${NC}" ; exit 1 ; } fi
+      - name: Checking for README.md
+        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e README.md ] ; then exit 0 ;  else { echo -e "${RED}YOU HAVE REMOVED THE FILE README.md AND YOU SHOULD HAVE NOT DONE IT${NC}" ; exit 1 ; } ; fi
+      - name: Checking for academic integrity statement
+        run: RED='\033[0;31m'; NC='\033[0m' ; x=`grep 'The work here submitted' README.md | perl -nae 'print $F[1]'` ; if [ "$x" != [X] ] && [ "$x" != [x] ] ; then { if [ "$x" == [\"X\"] ] || [ "$x" == [\'X\'] ] || [ "$x" == [\"x\"] ] || [ "$x" == [\'x\'] ] ; then echo -e "${RED}DO NOT USE QUOTE CHARACTERS WHEN CHECKING THE ACADEMIC INTEGRITY STATEMENT${NC}" ; else echo -e "${RED}YOU HAVE NOT YET AGREED TO THE ACADEMIC INTEGRITY STATEMENT (SEE README.md FILE)${NC}" ; fi ; exit 1 ; } ; fi
+      - name: Checking for mostres_analitzades.csv
+        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e mostres_analitzades.csv ] ; then { if [ `md5sum mostres_analitzades.csv | cut -d ' ' -f 1` == "5243531d6343f99288dc51793204418d" ] ; then exit 0 ; else { echo -e "${RED}WRONG FILE mostres_analitzades.csv${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE mostres_analitzades.csv${NC}" ; exit 1 ; } ; fi
+      - name: Checking for analysis.R
+        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e mostres_analitzades.csv ] ; then exit 0 ;  else { echo -e "${RED}MISSING FILE analysis.R${NC}" ; exit 1 ; } ; fi
+      - name: Check results file infeccions_catalunya_2023.csv
+        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e infeccions_catalunya_2023.csv ] ; then { if [ `cat infeccions_catalunya_2023.csv | tr -d '\r' | md5sum | cut -d ' ' -f 1` == "99040ad724d05b58e07192da54813951" ] ; then exit 0 ; else { echo -e "${RED}CONTENTS IN infeccions_catalunya_2023.csv ARE WRONG${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE infeccions_catalunya_2023.csv${NC}" ; exit 1 ; } fi
       - name: Check for setwd() in analysis.R
         run: RED='\033[0;31m'; NC='\033[0m' ; nlswd=`grep -n setwd analysis.R | head -1 | cut -d ':' -f 1` ; if [ $nlswd -gt 0 ] ; then { echo -e "${RED}YOU ARE CALLING setwd IN LINE $nlswd PLEASE DO NOT DO IT${NC}" ; exit 1 ; } ; else { exit 0 ; } ; fi
+      - name: Check for non-English letters and accents in object names
+        run: Rscript -e 'r <- getParseData(parse("analysis.R", keep.source=TRUE)) ; obj <- unique(r$text[which(r$token == "SYMBOL")]) ; mask <- grepl("[^ -~]", obj) ; if (any(mask)) { stop(sprintf("PLEASE DO NOT USE NON-ENGLISH LETTERS AND ACCENTS IN OBJECT NAMES SUCH AS WITH %s IN FILE %s", paste(obj[mask][1:min(c(3, sum(mask)))], collapse=", "), "analysis.R")) }'
       - name: Checking for syntax errors in analysis.R
         run: Rscript -e "parse('analysis.R')"
       - name: Run analysis.R
-        run: Rscript -e "options(encoding = 'UTF-8') ; source('analysis.R')"
-      - name: Check that analysis.R produces the expected results file COVID19CATlast6months.csv
-        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e COVID19CATlast6months.csv ] ; then { if [ `md5sum COVID19CATlast6months.csv | cut -d ' ' -f 1` == "8cdd6b70d7cd794ab9dea0b6ab2aaf7f" ] ; then exit 0 ; else { echo -e "${RED}RESULTING COVID19CATlast6months.csv IS WRONG${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}MISSING FILE COVID19CATlast6months.csv${NC}" ; exit 1 ; } ; fi
+        run: mv infeccions_catalunya_2023.csv uploaded_ic2023.csv ; Rscript -e "options(encoding = 'UTF-8') ; source('analysis.R')"
+      - name: Check that analysis.R produces the expected results file infeccions_catalunya_2023.csv
+        run: RED='\033[0;31m'; NC='\033[0m' ; if [ -e infeccions_catalunya_2023.csv ] ; then { if [ `md5sum infeccions_catalunya_2023.csv | cut -d ' ' -f 1` == "99040ad724d05b58e07192da54813951" ] ; then exit 0 ; else { echo -e "${RED}RESULTING infeccions_catalunya_2023.csv IS WRONG${NC}" ; exit 1 ; } ; fi ; } ; else { echo -e "${RED}R SCRIPT analysis.R DOES NOT PRODUCE THE CSV FILE infeccions_catalunya_2023.csv${NC}" ; exit 1 ; } ; fi
