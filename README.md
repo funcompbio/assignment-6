@@ -44,7 +44,7 @@ follow these 2 steps:
   `PERCENTAGE`, which should look exactly like this:
 
   ```
-      MES POSITIUS TOTAL PERCENTATGE
+     MES POSITIUS TOTAL PERCENTATGE
 1  Jan     1406  2046        68.7
 2  Feb     1233  1656        74.5
 3  Mar      971  1440        67.4
