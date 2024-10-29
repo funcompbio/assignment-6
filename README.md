@@ -1,14 +1,14 @@
 [![FCB-R-autograding](../../actions/workflows/fcb_autograding.yml/badge.svg)](../../actions?query=workflow%3AFCB-R-autograding)
 
-# Assignment 6 - FCB 2023
-### Deadline: 7/11/2023 - 23:59
+# Assignment 6 - FCB 2024
+### Deadline: 5/11/2024 - 23:59
 
 ## Submission procedure
 
 This assignment has to be submitted using GitHub Classroom. This
 means that you should have cloned the GitHub repo of this assignment from
-the organization account for FCB in the academic year 2023-24 at
-[https://github.com/funcompbio2023](https://github.com/funcompbio2023)
+the organization account for FCB in the academic year 2024-25 at
+[https://github.com/FCB-2024](https://github.com/FCB-2024)
 using the submission link provided at the FCB Moodle site.
 
 Once you have cloned the GitHub repo which has `assignment-6` and your
@@ -31,9 +31,9 @@ letter `X` between the squared brackets preceding the statement:
 ## Description
 
 The goal of this assignment is to **create an R script that produces a CSV file
-called `infeccions_catalunya_2023.csv` with data from the analysed samples
+called `infeccions_catalunya_2024.csv` with data from the analysed samples
 of the primary care microbiological sentinel surveillance system, aggregated
-and ordered by month for the year 2023.** To achieve this goal you should
+and ordered by month for the year 2024.** To achieve this goal you should
 follow these 2 steps:
 
   1. Create an R script called `analysis.R` with the R commands that
@@ -51,23 +51,23 @@ follow these 2 steps:
      exactly like this:
      ```
         MES POSITIUS TOTAL PERCENTATGE
-     1  Jan     1406  2046        68.7
-     2  Feb     1233  1656        74.5
-     3  Mar      971  1440        67.4
-     4  Apr      588   918        64.1
-     5  May      778  1224        63.6
-     6  Jun      394   724        54.4
-     7  Jul      374   649        57.6
-     8  Aug      269   482        55.8
-     9  Sep      506   850        59.5
-     10 Oct      481   794        60.6
+     1  Jan     1011  1465        69.0
+     2  Feb      733  1213        60.4
+     3  Mar      770  1249        61.6
+     4  Apr      703  1181        59.5
+     5  May      574   962        59.7
+     6  Jun      559   857        65.2
+     7  Jul      547   932        58.7
+     8  Aug      242   515        47.0
+     9  Sep      617   970        63.6
+     10 Oct      356   545        65.3
      ```
   2. Let the `data.frame` object of the resulting data be called `res`,
      the last line of your script should write to disk that object
-     into a CSV file called `infeccions_catalunya_2023.csv` with the
+     into a CSV file called `infeccions_catalunya_2024.csv` with the
      following R command:
      ```
-     write.csv(res, "infeccions_catalunya_2023.csv", row.names=FALSE)
+     write.csv(res, "infeccions_catalunya_2024.csv", row.names=FALSE)
      ```
 
 Your assignment repo should have the following files:
@@ -75,9 +75,9 @@ Your assignment repo should have the following files:
   1. This `README.md` file.
   2. The SIVIC data CSV file `mostres_analitzades.csv`.
   3. The R script file `analysis.R`.
-  4. The resulting CSV file `infeccions_catalunya_2023.csv`.
+  4. The resulting CSV file `infeccions_catalunya_2024.csv`.
 
-The file `infeccions_catalunya_2023.csv` should have the following
+The file `infeccions_catalunya_2024.csv` should have the following
 characteristics:
 
   1. It should be a CSV file using the comma (`,`) as column separator and
@@ -116,9 +116,9 @@ The rubric to evaluate this assignment consists of the following items:
   * Did you use the GitHub user profile you provided in the first assignment?
   * Did you properly agree to the academic integrity statement?
   * Does the assignment contain the required files?
-  * Does the file `infeccions_catalunya_2023.csv` contain the four required
+  * Does the file `infeccions_catalunya_2024.csv` contain the four required
     columns?
-  * Does the file `infeccions_catalunya_2023.csv` contain the required
-    infections data aggregated and ordered by month for the year 2023?
+  * Does the file `infeccions_catalunya_2024.csv` contain the required
+    infections data aggregated and ordered by month for the year 2024?
   * Does the R code run without errors?
   * Does the R code produce the expected result?
